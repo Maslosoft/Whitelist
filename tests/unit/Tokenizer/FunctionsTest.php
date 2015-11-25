@@ -50,12 +50,27 @@ CODE;
 <?php
 	$var();
 	$_GET['ssss']['wsss']();
-	$class::static();
-	$class::$var();
+	$_GET['ssss'][$var]();
 CODE;
+
+		$funcs = [
+			'$var',
+			"\$_GET['ssss']['wsss']",
+			"\$_GET['ssss'][\$var]",
+		];
+
 		$result = [];
 		$t = new Tokenizer($code);
 		$tokens = $t->getTokens();
+
+		foreach ($t->getFunctions() as $token)
+		{
+			$result[] = $token->val();
+		}
+
+		sort($funcs);
+		sort($result);
+		$this->assertSame($funcs, $result);
 	}
 
 }

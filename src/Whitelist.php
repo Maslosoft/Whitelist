@@ -22,6 +22,15 @@ class Whitelist
 
 	const DefaultInstanceId = 'whitelist';
 
+	/**
+	 *
+	 * @param mixed[]||string $config Configuration array or instance id
+	 */
+	public function __construct($config = null)
+	{
+		;
+	}
+
 	public function check($code)
 	{
 		$list = [

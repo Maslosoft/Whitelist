@@ -1,0 +1,28 @@
+## Proposed configuration syntax
+# Should check for config file name by instance name?
+---
+whitelist:
+   functions:
+      - strpos
+      - strstr
+      - echo
+      - print
+   classes:
+      - \Maslosoft\AweShare\AweShare
+      - \Maslosoft\Menulis\Page\
+      # Should deal with bizzare slashes too, see Addendum name normalizer
+      - Maslosoft\Menulis\Page\
+   methods:
+      - \Maslosoft\Page->getAbsoluteUrl
+      # Should allow finishing braces too to avoid confusion
+      - \Maslosoft\Page->getAbsoluteUrl()
+      # This should be failrly easy if use statements are resolved
+      - \Maslosoft\Ilmatar::seeUser
+      # This could work, but must ensure $this is not ovverriden. This could be usefull for php template files.
+      - $this->getUrl
+   fields:
+      - \Maslosoft\Page->title
+      - \Maslosoft\Ilmatar::$staticVar
+   constants:
+      - SOME_CONTANT
+      - \Maslosoft\PageStatus::Active

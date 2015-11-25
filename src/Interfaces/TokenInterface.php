@@ -17,6 +17,7 @@ interface TokenInterface
 
 	const TypeSimple = 666;
 	const TypeEmpty = 777;
+	const TypeFunction = 888;
 
 	/**
 	 * Get token value
@@ -30,7 +31,13 @@ interface TokenInterface
 
 	public function not($type);
 
+	/**
+	 * @return TokenInterface
+	 */
 	public function prev();
 
+	/**
+	 * @return TokenInterface
+	 */
 	public function next();
 }
