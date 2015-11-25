@@ -1,0 +1,27 @@
+{
+	"name": "maslosoft/whitelist",
+	"description": "PHP Code whitelister",
+	"license": [
+		"AGPL",
+		"Commercial"
+	],
+	"autoload": {
+		"psr-4": {
+			"Maslosoft\\Whitelist\\": "src"
+		}
+	},
+	"require-dev": {
+		"maslosoft/hedron": "*",
+		"codeception/codeception": "^2.1"
+	},
+	"authors": [
+		{
+			"name": "Peter Maselkowski",
+			"email": "pmaselkowski@gmail.com"
+		}
+	],
+	"require": {
+		"maslosoft/cli-shared": "*",
+		"maslosoft/embedi": "*"
+	}
+}
