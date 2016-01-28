@@ -161,7 +161,8 @@ class Tokenizer
 						break;
 					}
 				}
-				$result[] = new FunctionCall(implode('', array_reverse($name)), $this->tokens, $index);
+				$tmp = implode('', array_reverse($name));
+				$result[] = new FunctionCall($tmp, $this->tokens, $index);
 			}
 		}
 		return $result;
