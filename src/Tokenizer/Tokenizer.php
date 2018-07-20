@@ -169,4 +169,8 @@ class Tokenizer
 		return $result;
 	}
 
+	public function getStaticMethodCalls()
+	{
+
+	}
 }

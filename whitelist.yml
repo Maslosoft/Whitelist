@@ -15,6 +15,7 @@ whitelist:
       # Should deal with bizarre slashes too, see Addendum name normalizer
       - Maslosoft\Menulis\Page\
    methods:
+      # NOTE: Method should add class to classes list
       - \Maslosoft\Page->getAbsoluteUrl
       # Should allow finishing braces too to avoid confusion
       - \Maslosoft\Page->getAbsoluteUrl()
@@ -23,10 +24,12 @@ whitelist:
       # This could work, but must ensure $this is not overridden. This could be useful for php template files.
       - $this->getUrl
    fields:
+      # NOTE: Field should add class to classes list
       - \Maslosoft\Page->title
       - \Maslosoft\Ilmatar::$staticVar
    constants:
-      - SOME_CONTANT
+      - SOME_CONSTANT
+      # NOTE: Field should add class to classes list
       - \Maslosoft\PageStatus::Active
 required:
    variables:

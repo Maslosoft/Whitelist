@@ -43,6 +43,23 @@ CODE;
 		$this->assertTrue($this->wl->check($code));
 	}
 
+	public function testAllowedNonNamespacedClassSpanningManyLines()
+	{
+		$code = <<<CODE
+<?php
+NonNamespaced
+			::
+			widget(
+				[
+
+				]
+			);
+CODE;
+		$this->assertTrue($this->wl->check($code));
+
+
+	}
+
 	public function testAllowedAndNotAllowedNonNamespacedClasses()
 	{
 		$code = <<<CODE

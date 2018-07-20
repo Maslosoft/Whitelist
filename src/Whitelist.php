@@ -8,11 +8,15 @@
 
 namespace Maslosoft\Whitelist;
 
+use function array_sum;
+use function count;
 use function is_array;
 use function is_string;
 use Maslosoft\EmbeDi\EmbeDi;
 use Maslosoft\EmbeDi\Traits\FlyTrait;
 use Maslosoft\Whitelist\Checkers\FunctionChecker;
+use Maslosoft\Whitelist\Checkers\StaticMethodChecker;
+use Maslosoft\Whitelist\Helpers\ErrorCollector;
 use Maslosoft\Whitelist\Interfaces\CheckerInterface;
 use Maslosoft\Whitelist\Tokenizer\Tokenizer;
 use Psr\Log\LoggerAwareInterface;
@@ -36,7 +40,8 @@ class Whitelist implements LoggerAwareInterface
 	 * @var string[]|CheckerInterface[]
 	 */
 	public $checkers = [
-		FunctionChecker::class
+		FunctionChecker::class,
+		StaticMethodChecker::class
 	];
 
 	/**
@@ -50,6 +55,19 @@ class Whitelist implements LoggerAwareInterface
 	 * @var array
 	 */
 	public $required = [];
+
+	/**
+	 * List of aspects to check
+	 * @var array
+	 */
+	private $aspects = [
+		'variables',
+		'functions',
+		'classes',
+		'methods',
+		'fields',
+		'constants',
+	];
 
 	/**
 	 *
@@ -70,6 +88,7 @@ class Whitelist implements LoggerAwareInterface
 			EmbeDi::fly()->apply($config, $this);
 		}
 
+		// Instantiate checkers if not already provided as instances
 		$checkers = [];
 		foreach($this->checkers as $checker)
 		{
@@ -80,32 +99,41 @@ class Whitelist implements LoggerAwareInterface
 			}
 		}
 		$this->checkers = $checkers;
+
+		// Ensure that all aspects have sane values
+		foreach(['whitelist', 'require'] as $name)
+		{
+			foreach($this->aspects as $aspect)
+			{
+				if(empty($this->$name[$aspect]) || !is_array($this->$name[$aspect]))
+				{
+					$this->$name[$aspect] = [];
+				}
+			}
+		}
 	}
 
-	public function check($code)
+	public function check($code, ErrorCollector $ec = null)
 	{
-		// TODO Hardcoded list
-		$list = [
-			'ucfirst' => true,
-			'lcfirst' => true,
-		];
-		$t = new Tokenizer($code);
+		$tokenizer = new Tokenizer($code);
+
+		if(empty($ec))
+		{
+			$ec = new ErrorCollector;
+		}
+
+		$results = [];
 
 		foreach($this->checkers as $checker)
 		{
 			assert($checker instanceof CheckerInterface);
-		}
-
-		// TODO; Refactor below into that above draft^
-		foreach ($t->getFunctions() as $token)
-		{
-			if (isset($list[$token->value]))
+			if($checker instanceof LoggerAwareInterface)
 			{
-				continue;
+				$checker->setLogger($this->logger);
 			}
-			return false;
+			$results[] = (int) $checker->check($this, $tokenizer, $ec);
 		}
-		return true;
+		return array_sum($results) === count($results);
 	}
 
 	public function checkFile($fileName)

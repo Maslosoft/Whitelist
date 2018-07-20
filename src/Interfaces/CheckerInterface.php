@@ -9,9 +9,12 @@
 namespace Maslosoft\Whitelist\Interfaces;
 
 
+use Maslosoft\Whitelist\Helpers\ErrorCollector;
+use Maslosoft\Whitelist\Tokenizer\Tokenizer;
+use Maslosoft\Whitelist\Whitelist;
 use Psr\Log\LoggerAwareInterface;
 
 interface CheckerInterface extends LoggerAwareInterface
 {
-	public function setTokenizer();
+	public function check(Whitelist $list, Tokenizer $tokenizer, ErrorCollector $ec);
 }
