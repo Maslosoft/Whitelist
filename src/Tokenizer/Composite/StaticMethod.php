@@ -8,12 +8,22 @@
 
 namespace Maslosoft\Whitelist\Tokenizer;
 
+use Maslosoft\Whitelist\Interfaces\TokenInterface;
+
 /**
  * Token for static method call
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class StaticMethod
+class StaticMethod extends AbstractToken implements TokenInterface
 {
 
+	public function __construct(&$data, &$tokens, $index)
+	{
+		$this->tokens = &$tokens;
+		$this->index = $index;
+		$this->type = TokenInterface::TypeStaticMethod;
+		$this->value = $data;
+		$this->line = 0;
+	}
 }

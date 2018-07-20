@@ -16,22 +16,22 @@ use Maslosoft\Whitelist\Interfaces\CheckerInterface;
 use Maslosoft\Whitelist\Tokenizer\Tokenizer;
 use Maslosoft\Whitelist\Whitelist;
 
-class StaticMethodChecker extends AbstractChecker implements CheckerInterface
+class MethodChecker extends AbstractChecker implements CheckerInterface
 {
 	public function check(Whitelist $list, Tokenizer $tokenizer, ErrorCollector $ec)
 	{
 		$result = true;
 		$allowed = ListNormalizer::normalize($list->whitelist['methods']);
 		codecept_debug($allowed);
-		foreach ($tokenizer->getStaticMethodCalls() as $token)
+		foreach ($tokenizer->getMethodCalls() as $token)
 		{
-			$this->logger->debug("Allowed static method: $token->value");
+			$this->logger->debug("Allowed method: $token->value");
 			if (!empty($allowed[$token->value]))
 			{
 				continue;
 			}
 			$ec->forbidden($token);
-			$this->logger->info("Forbidden static method: $token->value");
+			$this->logger->info("Forbidden method: $token->value");
 			$result = false;
 		}
 		return $result;

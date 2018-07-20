@@ -15,6 +15,7 @@ use function is_string;
 use Maslosoft\EmbeDi\EmbeDi;
 use Maslosoft\EmbeDi\Traits\FlyTrait;
 use Maslosoft\Whitelist\Checkers\FunctionChecker;
+use Maslosoft\Whitelist\Checkers\MethodChecker;
 use Maslosoft\Whitelist\Checkers\StaticMethodChecker;
 use Maslosoft\Whitelist\Helpers\ErrorCollector;
 use Maslosoft\Whitelist\Interfaces\CheckerInterface;
@@ -41,7 +42,8 @@ class Whitelist implements LoggerAwareInterface
 	 */
 	public $checkers = [
 		FunctionChecker::class,
-		StaticMethodChecker::class
+		StaticMethodChecker::class,
+		MethodChecker::class
 	];
 
 	/**

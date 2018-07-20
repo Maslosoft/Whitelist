@@ -27,6 +27,7 @@ interface TokenInterface
 	const TypeSimple = 666;
 	const TypeEmpty = 777;
 	const TypeFunction = 888;
+	const TypeStaticMethod = 999;
 
 	/**
 	 * Get token value
