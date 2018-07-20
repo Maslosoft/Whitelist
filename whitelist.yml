@@ -1,7 +1,9 @@
 ## Proposed configuration syntax
-# Should check for config file name by instance name?
+# Should check for config file name by instance name? YES
 ---
 whitelist:
+   variables:
+      - content
    functions:
       - strpos
       - strstr
@@ -10,15 +12,15 @@ whitelist:
    classes:
       - \Maslosoft\AweShare\AweShare
       - \Maslosoft\Menulis\Page\
-      # Should deal with bizzare slashes too, see Addendum name normalizer
+      # Should deal with bizarre slashes too, see Addendum name normalizer
       - Maslosoft\Menulis\Page\
    methods:
       - \Maslosoft\Page->getAbsoluteUrl
       # Should allow finishing braces too to avoid confusion
       - \Maslosoft\Page->getAbsoluteUrl()
-      # This should be failrly easy if use statements are resolved
+      # This should be fairly easy if use statements are resolved
       - \Maslosoft\Ilmatar::seeUser
-      # This could work, but must ensure $this is not ovverriden. This could be usefull for php template files.
+      # This could work, but must ensure $this is not overridden. This could be useful for php template files.
       - $this->getUrl
    fields:
       - \Maslosoft\Page->title
@@ -26,3 +28,7 @@ whitelist:
    constants:
       - SOME_CONTANT
       - \Maslosoft\PageStatus::Active
+required:
+   variables:
+      - content
+   # And so on..

@@ -76,6 +76,7 @@ class Tokenizer
 		$result = [];
 		foreach ($this->tokens as $index => $token)
 		{
+			// TODO Consider also `exit` and `return`? Should be treated as functions??
 			// Check for eval first
 			if ($token->is(T_EVAL))
 			{
