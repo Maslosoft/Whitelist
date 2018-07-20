@@ -22,6 +22,7 @@
 	],
 	"require": {
 		"maslosoft/cli-shared": "*",
-		"maslosoft/embedi": "*"
+		"maslosoft/embedi": "*",
+		"psr/log": "^1.0"
 	}
 }

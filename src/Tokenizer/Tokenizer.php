@@ -69,7 +69,7 @@ class Tokenizer
 	 * * Variable name function calls
 	 * * Requires and includes
 	 *
-	 * @return TokenInterface[]
+	 * @return TokenInterface[]|Token[]|SimpleToken[]
 	 */
 	public function getFunctions()
 	{
@@ -141,7 +141,7 @@ class Tokenizer
 				// And whole expression value
 				// Need to check for `[$variable]` too
 				//
-				// If could not find variablie, bogus code? Break loop.
+				// If could not find variable, bogus code? Break loop.
 				// This would be code like only `]()`
 				while ($arr->not(TokenInterface::TypeEmpty))
 				{

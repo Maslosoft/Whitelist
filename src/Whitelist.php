@@ -8,27 +8,46 @@
 
 namespace Maslosoft\Whitelist;
 
+use function is_array;
+use function is_string;
+use Maslosoft\EmbeDi\EmbeDi;
+use Maslosoft\EmbeDi\Traits\FlyTrait;
 use Maslosoft\Whitelist\Tokenizer\Tokenizer;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 
 /**
  * Whitelist
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class Whitelist
+class Whitelist implements LoggerAwareInterface
 {
 
-	use \Maslosoft\EmbeDi\Traits\FlyTrait;
+	use FlyTrait,
+		LoggerAwareTrait;
 
 	const DefaultInstanceId = 'whitelist';
 
 	/**
 	 *
-	 * @param mixed[]||string $config Configuration array or instance id
+	 * @param mixed[]|string $config Configuration array or instance id
 	 */
-	public function __construct($config = null)
+	public function __construct($config = self::DefaultInstanceId)
 	{
-		;
+		assert(!empty($config));
+		assert(is_string($config) || is_array($config));
+		$this->logger = new NullLogger;
+
+		if(is_string($config))
+		{
+			EmbeDi::fly($config)->configure($this);
+		}
+		else
+		{
+			EmbeDi::fly()->apply($config, $this);
+		}
 	}
 
 	public function check($code)

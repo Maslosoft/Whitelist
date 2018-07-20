@@ -8,9 +8,18 @@
 
 namespace Maslosoft\Whitelist\Interfaces;
 
+use Maslosoft\Whitelist\Tokenizer\Tokens\SimpleToken;
+use Maslosoft\Whitelist\Tokenizer\Tokens\Token;
+
 /**
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
+ *
+ * @property int $line
+ * @property string $type
+ * @property string $name
+ * @property string $value
+ *
  */
 interface TokenInterface
 {
@@ -32,12 +41,12 @@ interface TokenInterface
 	public function not($type);
 
 	/**
-	 * @return TokenInterface
+	 * @return TokenInterface|Token|SimpleToken
 	 */
 	public function prev();
 
 	/**
-	 * @return TokenInterface
+	 * @return TokenInterface|Token|SimpleToken
 	 */
 	public function next();
 }
