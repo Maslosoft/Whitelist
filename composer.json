@@ -2,8 +2,8 @@
 	"name": "maslosoft/whitelist",
 	"description": "PHP Code whitelister",
 	"license": [
-		"AGPL",
-		"Commercial"
+		"AGPL-3.0-only",
+		"proprietary"
 	],
 	"autoload": {
 		"psr-4": {
