@@ -8,8 +8,6 @@
 
 namespace Maslosoft\Whitelist\Helpers;
 
-
-use function codecept_debug;
 use Maslosoft\Whitelist\Interfaces\TokenInterface;
 
 class ErrorCollector
@@ -17,7 +15,7 @@ class ErrorCollector
 	private $errors = [];
 	public function forbidden(TokenInterface $token)
 	{
-		codecept_debug("Forbidden: $token->value");
+
 	}
 
 	public function required(TokenInterface $token)

@@ -8,9 +8,6 @@
 
 namespace Maslosoft\Whitelist\Checkers;
 
-
-use function codecept_debug;
-use Exception;
 use Maslosoft\Whitelist\Helpers\ErrorCollector;
 use Maslosoft\Whitelist\Helpers\ListNormalizer;
 use Maslosoft\Whitelist\Interfaces\CheckerInterface;
@@ -23,7 +20,7 @@ class FunctionChecker extends AbstractChecker implements CheckerInterface
 	{
 		$result = true;
 		$allowed = ListNormalizer::normalize($list->whitelist['functions']);
-		codecept_debug($allowed);
+
 		foreach ($tokenizer->getFunctions() as $token)
 		{
 			$this->logger->debug("Allowed function: $token->value");

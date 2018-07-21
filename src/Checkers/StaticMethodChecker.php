@@ -8,8 +8,6 @@
 
 namespace Maslosoft\Whitelist\Checkers;
 
-
-use function codecept_debug;
 use Maslosoft\Whitelist\Helpers\ErrorCollector;
 use Maslosoft\Whitelist\Helpers\ListNormalizer;
 use Maslosoft\Whitelist\Interfaces\CheckerInterface;
@@ -22,7 +20,7 @@ class StaticMethodChecker extends AbstractChecker implements CheckerInterface
 	{
 		$result = true;
 		$allowed = ListNormalizer::normalize($list->whitelist['methods']);
-		codecept_debug($allowed);
+
 		foreach ($tokenizer->getStaticMethodCalls() as $token)
 		{
 			$this->logger->debug("Allowed static method: $token->value");
