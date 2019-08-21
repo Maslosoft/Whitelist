@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace Maslosoft\Whitelist\Tokenizer;
+namespace Maslosoft\Whitelist\Tokenizer\Composite;
 
 /**
  * Token for class method call

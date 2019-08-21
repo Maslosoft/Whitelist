@@ -72,6 +72,12 @@ class Whitelist implements LoggerAwareInterface
 	];
 
 	/**
+	 * Version number holder
+	 * @var string
+	 */
+	private static $_version = null;
+
+	/**
 	 *
 	 * @param mixed[]|string $config Configuration array or instance id
 	 */
@@ -143,4 +149,16 @@ class Whitelist implements LoggerAwareInterface
 
 	}
 
+	/**
+	 * Get whitelist version
+	 * @return string
+	 */
+	public function getVersion()
+	{
+		if (null === self::$_version)
+		{
+			self::$_version = require __DIR__ . '/version.php';
+		}
+		return self::$_version;
+	}
 }

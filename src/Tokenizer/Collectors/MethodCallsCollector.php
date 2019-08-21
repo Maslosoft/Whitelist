@@ -13,7 +13,7 @@ use function array_unshift;
 use function implode;
 use Maslosoft\Whitelist\Interfaces\TokenCollectorInterface;
 use Maslosoft\Whitelist\Interfaces\TokenInterface;
-use Maslosoft\Whitelist\Tokenizer\StaticMethod;
+use Maslosoft\Whitelist\Tokenizer\Composite\StaticMethod;
 use const T_DOUBLE_COLON;
 use const T_NEW;
 use const T_OBJECT_OPERATOR;

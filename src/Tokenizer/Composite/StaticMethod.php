@@ -6,9 +6,10 @@
  * and open the template in the editor.
  */
 
-namespace Maslosoft\Whitelist\Tokenizer;
+namespace Maslosoft\Whitelist\Tokenizer\Composite;
 
 use Maslosoft\Whitelist\Interfaces\TokenInterface;
+use Maslosoft\Whitelist\Tokenizer\AbstractToken;
 
 /**
  * Token for static method call
