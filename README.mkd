@@ -1,0 +1,39 @@
+<!--header-->
+<!-- Auto generated do not modify between `header` and `/header` -->
+
+# <a href="https://maslosoft.com/whitelist/">Maslosoft Whitelist</a>
+<a href="https://maslosoft.com/whitelist/">_PHP Code White List_</a>
+
+<a href="https://packagist.org/packages/maslosoft/whitelist" title="Latest Stable Version">
+<img src="https://poser.pugx.org/maslosoft/whitelist/v/stable.svg" alt="Latest Stable Version" style="height: 20px;"/>
+</a>
+<a href="https://packagist.org/packages/maslosoft/whitelist" title="License">
+<img src="https://poser.pugx.org/maslosoft/whitelist/license.svg" alt="License" style="height: 20px;"/>
+</a>
+<a href="https://scrutinizer-ci.com/g/Maslosoft/Whitelist/?branch=master">
+	<img src="https://scrutinizer-ci.com/g/Maslosoft/Whitelist/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"/>
+</a>
+<a href="https://scrutinizer-ci.com/g/Maslosoft/Whitelist/?branch=master">
+	<img src="https://scrutinizer-ci.com/g/Maslosoft/Whitelist/badges/coverage.png?b=master" alt="Code Coverage" />
+</a>
+
+### Quick Install
+```bash
+composer require maslosoft/whitelist
+```
+
+### Documentation
+
+<a href="https://maslosoft.com/whitelist/docs/">Full Whitelist Documentation</a>
+
+
+
+### Allow only necessary PHP functions
+
+Whitelist allows you to define allowed PHP functions, variable, classes, and forbid the rest.
+By default it also forbids unsafe constructs, like `eval`, variable variables names, variable methods names.
+
+
+<!--/header-->
+# Whitelist
+PHP Code whitelister

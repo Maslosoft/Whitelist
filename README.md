@@ -1,2 +1,0 @@
-# Whitelist
-PHP Code whitelister

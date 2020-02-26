@@ -1,0 +1,25 @@
+language: php
+dist: bionic
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+  - nightly
+  - hhvm
+sudo: false
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: nightly
+    - php: hhvm
+cache:
+  directories:
+    - vendor
+install:
+  - composer update
+  # Ensure that test script is executable
+  - chmod +x run-travis
+script:
+  - cd $TRAVIS_BUILD_DIR
+  - bash run-travis
