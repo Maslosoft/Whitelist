@@ -11,22 +11,22 @@ whitelist:
       - print
    classes:
       - \Maslosoft\AweShare\AweShare
-      - \Maslosoft\Menulis\Page\
       # Should deal with bizarre slashes too, see Addendum name normalizer
-      - Maslosoft\Menulis\Page\
+      - \Maslosoft\Cms\Page\
+      - Maslosoft\Cms\Page\
    methods:
       # NOTE: Method should add class to classes list
       - \Maslosoft\Page->getAbsoluteUrl
       # Should allow finishing braces too to avoid confusion
       - \Maslosoft\Page->getAbsoluteUrl()
       # This should be fairly easy if use statements are resolved
-      - \Maslosoft\Ilmatar::seeUser
+      - \Maslosoft\Components::seeUser
       # This could work, but must ensure $this is not overridden. This could be useful for php template files.
       - $this->getUrl
    fields:
       # NOTE: Field should add class to classes list
       - \Maslosoft\Page->title
-      - \Maslosoft\Ilmatar::$staticVar
+      - \Maslosoft\Components::$staticVar
    constants:
       - SOME_CONSTANT
       # NOTE: Field should add class to classes list
