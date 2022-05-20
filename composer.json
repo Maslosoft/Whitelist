@@ -26,7 +26,7 @@
         "php": ">= 7.1",
         "maslosoft/cli-shared": "*",
         "maslosoft/embedi": "*",
-        "psr/log": "^1"
+        "psr/log": "^1|^2|^3"
     },
     "homepage": "https://maslosoft.com/whitelist/"
 }
