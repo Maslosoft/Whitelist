@@ -1,7 +1,7 @@
 <!--header-->
 <!-- Auto generated do not modify between `header` and `/header` -->
 
-# <a href="https://maslosoft.com/whitelist/">Maslosoft Whitelist</a>
+# <a href="https://maslosoft.com/whitelist/"><img src="https://maslosoft.com/whitelist/whitelist.svg" style="height:24px;" alt="Whitelist Logo"></a> <a href="https://maslosoft.com/whitelist/">Maslosoft Whitelist</a>
 <a href="https://maslosoft.com/whitelist/">_PHP Code White List_</a>
 
 <a href="https://packagist.org/packages/maslosoft/whitelist" title="Latest Stable Version">
